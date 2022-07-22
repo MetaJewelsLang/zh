@@ -34,7 +34,30 @@
 					<a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a>
 				</div>
 			</header>
-			<article class="content"><h1 id='header-关于'>关于<a class='docs-heading-anchor-permalink'></a></h1><h2 id='header-项目简介'>项目简介<a class='docs-heading-anchor-permalink'></a></h2><p>本项目希望改变现有的数学形式模型与部分内容，使其在保持严密性同时更具有可扩展性与易开发性，并将其延伸到一切自然科学及一切可规范化的领域</p><h2 id='header-特性'>特性<a class='docs-heading-anchor-permalink'></a></h2><ul><li><p>类型系统</p></li><li><p>抽象系统</p></li><li><p>宏系统</p></li><li><p>模块管理系统</p></li></ul><h2 id='header-用途'>用途<a class='docs-heading-anchor-permalink'></a></h2><ul><li><p>人工智能训练数据与新算法创建</p></li><li><p>完善法律</p></li></ul><h2 id='header-状态'>状态<a class='docs-heading-anchor-permalink'></a></h2><p>项目当前处于 0.1.0 状态，1.0.0 正式发布预计将在15年内完成</p><h2 id='header-参考阅读'>参考阅读<a class='docs-heading-anchor-permalink'></a></h2><ul><li><p>Julia Type Theory</p></li><li><p>Haskell Category Theory</p></li></ul></article>
+			<article class="content"><h1 id='header-关于'>关于<a class='docs-heading-anchor-permalink'></a></h1><h2 id='header-项目简介'>项目简介<a class='docs-heading-anchor-permalink'></a></h2><p>本项目希望改变现有的数学形式模型与部分内容，使其在保持严密性同时更具有可扩展性与易开发性，并将其延伸到一切自然科学及一切可规范化的领域</p><h2 id='header-特性'>特性<a class='docs-heading-anchor-permalink'></a></h2><ul><li><p>类型系统</p></li><li><p>抽象系统</p></li><li><p>宏系统</p></li><li><p>模块管理系统</p></li></ul><h2 id='header-用途'>用途<a class='docs-heading-anchor-permalink'></a></h2><ul><li><p>人工智能训练数据与新算法创建</p></li><li><p>完善法律</p></li></ul><h2 id='header-状态'>状态<a class='docs-heading-anchor-permalink'></a></h2><p>项目当前处于 0.1.0 状态，1.0.0 正式发布预计将在15年内完成</p><h2 id='header-图景/设计样例'>图景/设计样例<a class='docs-heading-anchor-permalink'></a></h2><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>@category RealNumber(r::Range) begin
+	@rule ofcat(cat"WithUpperBound", r)
+	@rule ofcat(cat"OrderedField", r, +, *)
+	@rule (@forallin n ℚ n∈r)
+end
+
+struct DedekindCutRealNumber
+	lower::Set
+	higher::Set
+	function DedekindCutRealNumber(lower::Set, higher::Set)
+		if lower⊆ℚ && higher⊆ℚ && union(lower, higher)==ℚ && !isempty(lower) && !isempty(higher) && max(lower)<min(higher)
+			return new(lower, higher)
+		else
+			error("...")
+		end
+	end
+end
+</code></pre></div><br /><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>mjl> love
+love (generic function with 1 method)
+
+mjla> methods(love)
+# 1 method for generic function "love":
+[1] love(from::FreeWill, to::Any, judge::Will) in Human.General at general.mjl:23
+</code></pre></div><br /><h2 id='header-参考阅读'>参考阅读<a class='docs-heading-anchor-permalink'></a></h2><ul><li><p>Julia Type Theory</p></li><li><p>Haskell Category Theory</p></li></ul></article>
 			<nav class="docs-footer"><a class="docs-footer-prevpage" href="index.html">« 索引</a><a class='docs-footer-nextpage' href='guide.html'>« 使用指南</a><div class='flexbox-break'></div><p class='footer-message'>Powered by <a href='https://github.com/JuliaRoadmap/DoctreePages.jl'>DoctreePages.jl</a> and its dependencies.</p></nav>
 			<div class='giscus'></div>
 		</div>
