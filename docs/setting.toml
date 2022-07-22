@@ -1,0 +1,13 @@
+outline = [
+	"meta",
+	"low",
+	"core",
+	"base",
+	"stdlib",
+]
+[names]
+meta = "Meta"
+low = "底层语法"
+core = "内置内容"
+base = "Base内容"
+stdlib = "标准库"

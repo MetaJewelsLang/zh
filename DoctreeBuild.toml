@@ -1,0 +1,14 @@
+version = "1.2.1"
+
+[giscus]
+repo = "MetaJewelsLang/zh"
+repo_id = "R_kgDOHsePSw"
+category_id = "DIC_kwDOHsePS84CQXTB"
+lang="zh-CN"
+
+[pages]
+lang = "zh"
+repo_name = "zh"
+repo_owner = "MetaJewelsLang"
+server_prefix = "/zh"
+title = "MetaJewels"
