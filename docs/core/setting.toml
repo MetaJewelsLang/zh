@@ -1,5 +1,6 @@
 outline = [
 	"types",
+	"logics",
 	"forall",
 	"exists",
 	"tuples",

@@ -15,6 +15,36 @@
 ## 状态
 项目当前处于 0.1.0 状态，1.0.0 正式发布预计将在15年内完成
 
+## 图景/设计样例
+```jl
+@category RealNumber(r::Range) begin
+	@rule ofcat(cat"WithUpperBound", r)
+	@rule ofcat(cat"OrderedField", r, +, *)
+	@rule (@forallin n ℚ n∈r)
+end
+
+struct DedekindCutRealNumber
+	lower::Set
+	higher::Set
+	function DedekindCutRealNumber(lower::Set, higher::Set)
+		if lower⊆ℚ && higher⊆ℚ && union(lower, higher)==ℚ && !isempty(lower) && !isempty(higher) && max(lower)<min(higher)
+			return new(lower, higher)
+		else
+			error("...")
+		end
+	end
+end
+```
+
+```jl
+mjl> love
+love (generic function with 1 method)
+
+mjla> methods(love)
+# 1 method for generic function "love":
+[1] love(from::FreeWill, to::Any, judge::Will) in Human.General at general.mjl:23
+```
+
 ## 参考阅读
 - Julia Type Theory
 - Haskell Category Theory
