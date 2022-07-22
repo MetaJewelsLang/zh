@@ -35,7 +35,7 @@
 				</div>
 			</header>
 			<article class="content"><h1 id='header-集合'>集合<a class='docs-heading-anchor-permalink'></a></h1><p>集合类型名为 <code>Set</code></p><h2 id='header-相关函数'>相关函数<a class='docs-heading-anchor-permalink'></a></h2><p><code>===</code> 原型为（这实际是外延公理的调整）</p><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>===(a::Set, b::Set) = forall(x -> (x∈a => x∈b))
-</code></pre></div><br /><p><code>∈</code> 表明「属于」，唯一方法是 <code>(::Any, ::Set)</code></p><p><code>Set(p::Map)</code> 构建一个满足条件 <code>p</code> 的集合，它的存在性需要额外证明，且 <code>p</code> 必须从 <code>Set</code> 映射到 <code>Bool</code></p><h2 id='header-相关宏'>相关宏<a class='docs-heading-anchor-permalink'></a></h2><p><code>@enum</code> 能够通过枚举构造集合</p><h2 id='header-相关公理'>相关公理<a class='docs-heading-anchor-permalink'></a></h2><p>空集公理，原型为</p><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>@axiom empty_set() begin
+</code></pre></div><br /><p><code>∈</code>/<code>in</code> 表明「属于」，唯一方法是 <code>(::Any, ::Set)</code></p><p><code>Set(p::Predicate)</code> 构建一个满足条件 <code>p</code> 的集合，它的存在性需要额外证明，且 <code>p</code> 必须从 <code>Set</code> 映射到 <code>Bool</code></p><h2 id='header-相关宏'>相关宏<a class='docs-heading-anchor-permalink'></a></h2><p><code>@enum</code> 能够通过枚举构造集合</p><h2 id='header-相关公理'>相关公理<a class='docs-heading-anchor-permalink'></a></h2><p>空集公理，原型为</p><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>@axiom empty_set() begin
 	exists(emp -> forall(x -> !(x∈emp)))
 end
 </code></pre></div><br /><p>配对公理，原型为</p><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>@axiom @forall pair_set(a, b) begin
