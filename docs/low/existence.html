@@ -3,9 +3,9 @@
 <head>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>底层语法/语法树 - MetaJewels</title>
+	<title>底层语法/存在性 - MetaJewels</title>
 	<meta name="tURL" id="tURL" content="../../"/>
-	<meta name="description" content="底层语法/语法树 - MetaJewels">
+	<meta name="description" content="底层语法/存在性 - MetaJewels">
 	<script src="../../extra/info.js"></script><script src='https://giscus.app/client.js' data-repo='MetaJewelsLang/zh' data-repo-id='R_kgDOHsePSw' data-category='General' data-category-id='DIC_kwDOHsePS84CQXTB' data-mapping='pathname' data-reactions-enabled='1' data-emit-metadata='0' data-input-position='top' data-theme='preferred_color_scheme' data-lang='zh-CN' crossorigin='anonymous' async></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../extra/main.js"></script>
 	<link id="theme-href" rel="stylesheet" type="text/css" href="../../css/light.css">
@@ -26,16 +26,16 @@
 		<div class="docs-main">
 			<header class="docs-navbar">
 				<nav class="breadcrumb">
-					<ul class="is-hidden-mobile"><li class="is-active">底层语法 / 语法树</li></ul>
-					<ul class="is-hidden-tablet"><li class="is-active">底层语法 / 语法树</li></ul>
+					<ul class="is-hidden-mobile"><li class="is-active">底层语法 / 存在性</li></ul>
+					<ul class="is-hidden-tablet"><li class="is-active">底层语法 / 存在性</li></ul>
 				</nav>
-				<div class="docs-right"><a class='docs-edit-link' href='https://github.com/MetaJewelsLang/zh/tree/master/docs/low/syntaxtree.md' target='_blank'><span class='docs-label is-hidden-touch'>编辑此页面</span></a>
+				<div class="docs-right"><a class='docs-edit-link' href='https://github.com/MetaJewelsLang/zh/tree/master/docs/low/existence.md' target='_blank'><span class='docs-label is-hidden-touch'>编辑此页面</span></a>
 					<a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="设置"></a>
 					<a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a>
 				</div>
 			</header>
-			<article class="content"><h1 id='header-语法树'>语法树<a class='docs-heading-anchor-permalink'></a></h1><p>形如 <code>(3*4+2)</code> 的东西会首先被「解析(parse)」成如下的「表达式(expression)」</p><p><img src='/zh/assets/svg/syntaxtree-1.svg' alt='img'></p><p>在许多情形下，它会被进一步的「评估(evaluate)」操作得到「值(value)」：14，但本语言中此表达式会被保留</p><h2 id='header-操作'>操作<a class='docs-heading-anchor-permalink'></a></h2><p>以表达式 <code>x+f(y)</code> 为例，假设已知 <code>f(x) = x^2</code> （或者用「λ表达式」，记作<code>f = λ x.x^2</code>）</p><ul><li><p>先对 <code>f</code> 进行「α-重命名」操作，变为 <code>f(y) = y^2</code></p></li><li><p>再通过 「β-规约」操作带回表达式，得到 <code>x+(y^2)</code></p></li></ul></article>
-			<nav class="docs-footer"><a class='docs-footer-prevpage' href='existence.html'>« 存在性</a><div class='flexbox-break'></div><p class='footer-message'>Powered by <a href='https://github.com/JuliaRoadmap/DoctreePages.jl'>DoctreePages.jl</a> and its dependencies.</p></nav>
+			<article class="content"><h1 id='header-存在性'>存在性<a class='docs-heading-anchor-permalink'></a></h1><p>考虑到一些特殊的情况（例如罗素悖论、错误抛出），量的存在性不会总是被自动赋予。</p><p>解释器会给每个量进行存在性标记。对于集合，存在性需要根据相关公理进行证明，其中简单的证明会由解释器自动完成。</p><p>对于函数，解释器会进行「存在性保持」标记，表明若每个参数存在，则结果一定存在；这通过检测其中是否含有错误抛出，且调用的所有函数均有此标记（证明会由解释器自动完成）。特别地，构造函数中调用的 <code>new</code> 自动保有此标记。</p><p>对于通过调用函数得到的量，若该函数有「存在性保持」标记且所有参数均存在，则自动生成存在性标记，对于 <code>getexist</code>，解释器会搜索已知的证明结果尝试赋予存在性。</p></article>
+			<nav class="docs-footer"><a class="docs-footer-prevpage" href="index.html">« 索引</a><a class='docs-footer-nextpage' href='syntaxtree.html'>« 语法树</a><div class='flexbox-break'></div><p class='footer-message'>Powered by <a href='https://github.com/JuliaRoadmap/DoctreePages.jl'>DoctreePages.jl</a> and its dependencies.</p></nav>
 			<div class='giscus'></div>
 		</div>
 	</div>
