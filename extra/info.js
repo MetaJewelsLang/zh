@@ -1,8 +1,8 @@
-const buildmessage=`built at Sun Jul 24 14:18:46 2022`
+const buildmessage=`built at Tue Jul 26 12:41:05 2022`
 const page_foot=`Powered by <a href='https://github.com/JuliaRoadmap/DoctreePages.jl'>DoctreePages.jl</a> and its dependencies.`
 const tar_css=`css`
 const filesuffix=`.html`
-const menu=['',[`meta/Meta`,`about/关于`,`guide/使用指南`,`dimensions/层级`,],[`low/底层语法`,`existence/存在性`,`syntaxtree/语法树`,`binding/绑定`,],[`core/内置内容`,`types/类型`,`logics/逻辑`,`forall/任意`,`exists/存在`,`tuples/元组`,`namedtuples/具名元组`,`sets/集合`,],[`base/Base内容`,],[`stdlib/标准库`,`about/关于`,],]
+const menu=['',[`meta/Meta`,`about/关于`,`guide/使用指南`,`dimensions/层级`,],[`low/底层语法`,`existence/存在性`,`syntaxtree/语法树`,`binding/绑定`,`functions/函数`,],[`core/内置内容`,`types/类型`,`logics/逻辑`,`forall/任意`,`exists/存在`,`tuples/元组`,`namedtuples/具名元组`,`sets/集合`,],[`base/Base内容`,],[`stdlib/标准库`,`about/关于`,],]
 const configpaths=        {'headroom': 'https://cdnjs.cloudflare.com/ajax/libs/headroom/0.10.3/headroom.min',
 		'jquery': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min',
 		'headroom-jquery': 'https://cdnjs.cloudflare.com/ajax/libs/headroom/0.10.3/jQuery.headroom.min',

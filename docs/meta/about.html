@@ -44,17 +44,17 @@ struct DedekindCutRealNumber
 	lower::Set
 	higher::Set
 	function DedekindCutRealNumber(lower::Set, higher::Set)
-		if lower⊆ℚ && higher⊆ℚ && union(lower, higher)==ℚ && !isempty(lower) && !isempty(higher) && max(lower)<min(higher)
+		if lower⊆ℚ &amp;&amp; higher⊆ℚ &amp;&amp; union(lower, higher)==ℚ &amp;&amp; !isempty(lower) &amp;&amp; !isempty(higher) &amp;&amp; max(lower)&lt;min(higher)
 			return new(lower, higher)
 		else
 			error("...")
 		end
 	end
 end
-</code></pre></div><br /><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>mjl> love
+</code></pre></div><br /><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>mjl&gt; love
 love (generic function with 1 method)
 
-mjla> methods(love)
+mjl&gt; methods(love)
 # 1 method for generic function "love":
 [1] love(from::FreeWill, to::Any, judge::Will) in Human.General at general.mjl:23
 </code></pre></div><br /><h2 id='header-参考阅读'>参考阅读<a class='docs-heading-anchor-permalink'></a></h2><ul><li><p>Julia Type Theory</p></li><li><p>Haskell Category Theory</p></li></ul></article>
