@@ -40,7 +40,7 @@ end
 mjl> love
 love (generic function with 1 method)
 
-mjla> methods(love)
+mjl> methods(love)
 # 1 method for generic function "love":
 [1] love(from::FreeWill, to::Any, judge::Will) in Human.General at general.mjl:23
 ```
