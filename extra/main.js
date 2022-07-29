@@ -1,11 +1,15 @@
 var tURL=document.getElementById("tURL").content
 var theme=localStorage.getItem("theme")
 if(theme==undefined)theme="light"
-else if(theme!="light")document.getElementById("theme-href").href=`${tURL}${tar_css}/${theme}.css`
+else if(theme!="light"){
+	document.getElementById("theme-href").href=`${tURL}${tar_css}/${theme}.css`
+}
 const oril=document.location.origin.length
+
 requirejs.config({ paths: configpaths, shim: configshim})
 require(main_requirement, function($){
 	$(document).ready(function(){
+
 
 let settings=document.createElement("div")
 settings.className="modal"
@@ -23,6 +27,7 @@ document.body.append(settings)
 $("#documenter-settings-button").click(() => settings.classList.toggle("is-active"))
 $("#documenter-settings button.delete").click(() => settings.classList.remove("is-active"))
 $(document).keyup((e) => {if(e.keyCode==27)settings.classList.remove("is-active")})
+
 var sidebar = $("#documenter > .docs-sidebar")
 var sidebar_button = $("#documenter-sidebar-button")
 sidebar_button.click(function(ev){
@@ -46,6 +51,7 @@ function resize(){
 resize()
 $(window).resize(resize)
 $(window).on('orientationchange', resize)
+
 let pi=$("#documenter-themepicker")
 for(let tag of pi[0].children){
 	if(tag.value==theme){
@@ -57,6 +63,7 @@ pi.change(function(){
 	$("#theme-href")[0].href=`${tURL}${tar_css}/${theme}.css`
 	localStorage.setItem("theme", theme)
 })
+
 $(".content .docs-heading-anchor-permalink").click(function(ev){
 	let s=document.location.href
 	let id=ev.target.parentNode.id
@@ -64,6 +71,7 @@ $(".content .docs-heading-anchor-permalink").click(function(ev){
 		() => {}, () => window.alert("failed")
 	)
 })
+
 let hljs=window.hljs
 hljs.registerAliases("plain", {languageName: "plaintext"})
 hljs.registerAliases("jl", {languageName: "julia"})
@@ -73,13 +81,16 @@ for(let i of $("code.hljs")){
 	let header=i.parentElement.parentElement.firstElementChild
 	header.innerHTML=`<span class='codeblock-paste' onclick='copycodeblock(event)'>📋</span>`
 }
+
 buildmenu()
+
 for(let i of $(".checkis")){
 	var chk=i.dataset["check"]
 	if(localStorage.getItem(chk)=="true"){
 		i.style.display="block"
 	}
 }
+
 $(".submit-fill").click(function(ev){
 	submit_fill(ev.target)
 })
@@ -91,6 +102,7 @@ $(".instruction-fill").click(function(ev){
 	let i=ev.target
 	i.parentNode.children[1].value=i.dataset["con"]
 })
+
 let marked=JSON.parse(localStorage.getItem("marked"))
 marked = marked==null ? (new Set()) : (new Set(marked))
 for(let it of $(".li-dir,.li-file")){
@@ -102,6 +114,7 @@ for(let it of $(".li-dir,.li-file")){
 	if(marked.has(it.firstElementChild.href.substring(oril)))span.className="li-marked"
 	it.prepend(span)
 }
+
 $(".hljs-ln-numbers").ready(function(){
 	let loc=document.location.hash
 	loc=loc.substring(1, loc.length)
@@ -112,7 +125,11 @@ $(".hljs-ln-numbers").ready(function(){
 		scroll_to_lines(from, to)
 	}
 })
+
 $('.modal-card-foot').innerText=buildmessage
+
+
+
 const clockemojis="🕛🕐🕑🕒🕓🕔🕕🕖🕗🕘🕙🕚⌛ "
 for(let i of $(".test-area")){
 	let header=document.createElement("div")
@@ -162,6 +179,8 @@ for(let i of $(".test-area")){
 	button.onclick=function(){
 		clearInterval(inter)
 		calc_test(i)
+		button.innerText="🔍"
+		button.onclick=function(){}
 	}
 	lock.onclick=function(){
 		if(locked){
@@ -175,6 +194,7 @@ for(let i of $(".test-area")){
 		locked=!locked
 	}
 }
+
 for(let i of $(".select-is")){
 	let choices=dictparse(i.dataset["chs"])
 	let store=dictparse(i.dataset["st"])
@@ -214,14 +234,33 @@ for(let i of $(".select-is")){
 	}
 	i.append(select)
 }
+
+
+let gsc=document.createElement("script")
+gsc.src="https://giscus.app/client.js"
+gsc.dataset.repo="MetaJewelsLang/zh"
+gsc.dataset.repoId="R_kgDOHsePSw"
+gsc.dataset.category="General"
+gsc.dataset.categoryId="DIC_kwDOHsePS84CQXTB"
+gsc.dataset.mapping="pathname"
+gsc.dataset.reactionsEnabled="1"
+gsc.dataset.emitMetadata="0"
+gsc.dataset.inputPosition="top"
+gsc.dataset.theme=theme
+gsc.dataset.lang="zh-CN"
+gsc.crossOrigin="anonymous"
+document.body.append(gsc)
+
 	})
 })
+
 require(['jquery', 'headroom', 'headroom-jquery'], function($, Headroom){
 	window.Headroom = Headroom
 	$(document).ready(function(){
 		$("#documenter .docs-navbar").headroom({tolerance: {up: 10, down: 10 }})
 	})
 })
+
 function copycodeblock(ev){
 	let tar=ev.target
 	let body=tar.parentNode.nextSibling
@@ -238,6 +277,7 @@ function copycodeblock(ev){
 		function(){window.alert("failed")}
 	)
 }
+
 function buildmenu(){
 	let lis=_buildmenu(menu, "docs/", 0)
 	let dm=$(".docs-menu")[0]
@@ -344,6 +384,7 @@ function activate_token(node){
 	}
 	return flag
 }
+
 function upd_trigger(key){
 	let mode=localStorage.getItem(key)=="true" ? "block" : "none"
 	for(let i of $(".checkis")){
@@ -353,6 +394,7 @@ function upd_trigger(key){
 		}
 	}
 }
+
 function submit_fill(i){
 	let inv=i.parentNode.children[1].value
 	let isreg=i.dataset["isreg"]=="true"
@@ -365,6 +407,7 @@ function submit_fill(i){
 	}
 	setTimeout(function(){ i.style.backgroundColor=null }, 2000)
 }
+
 function toggle_mark(li){
 	let link=li.lastElementChild.href.substring(oril)
 	let marked=new Set(JSON.parse(localStorage.getItem("marked")))
@@ -372,6 +415,7 @@ function toggle_mark(li){
 	else marked.add(link)
 	localStorage.setItem("marked", JSON.stringify([...marked]))
 }
+
 function scroll_to_lines(from, to){
 	let cb=$("code.hljs")[0]
 	let nums=cb.querySelectorAll(".hljs-ln-numbers")
@@ -380,6 +424,7 @@ function scroll_to_lines(from, to){
 	}
 	nums[from-1].scrollIntoView()
 }
+
 require(['jquery', 'katex'], function($, katex){
 	$(document).ready(function(){
 		for(let e of $(".math"))katex.render(e.innerText, e,
@@ -390,6 +435,7 @@ require(['jquery', 'katex'], function($, katex){
 		)
 	})
 })
+
 function try_notify(title){
 	if(window.Notification && Notification.permission=="granted"){
 		Notification.requestPermission(function(st){
@@ -400,6 +446,7 @@ function try_notify(title){
 		window.alert(title)
 	}
 }
+
 function getchooseinput(node){
 	let ins=node.querySelectorAll("input")
 	let str=""
@@ -475,7 +522,9 @@ function calc_test(node){
 	}
 	node.firstElementChild.children[1].innerText=" "+sum+"/"+node.dataset["fs"]
 }
+
 function dictparse(str){
 	if(str.endsWith(','))str=str.substring(0, str.length-1)
 	return JSON.parse("{"+str+"}")
 }
+
