@@ -35,8 +35,21 @@
 				</div>
 			</header>
 			<article class="content"><h1 id='header-集合'>集合<a class='docs-heading-anchor-permalink'></a></h1><p>集合类型名为 <code>Set</code></p><h2 id='header-相关函数'>相关函数<a class='docs-heading-anchor-permalink'></a></h2><p><code>===</code> 原型为（这实际是外延公理的调整）</p><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>===(a::Set, b::Set) = forall(x -&gt; (x∈a =&gt; x∈b))
-</code></pre></div><br /><p><code>∈</code>/<code>in</code> 表明「属于」，唯一方法是 <code>(::Any, ::Set)</code></p><p><code>Set(p::Predicate)</code> 构建一个满足条件 <code>p</code> 的集合，它的存在性需要额外证明，且 <code>p</code> 必须从 <code>Set</code> 映射到 <code>Bool</code></p><h2 id='header-相关宏'>相关宏<a class='docs-heading-anchor-permalink'></a></h2><p><code>@enum</code> 能够通过枚举构造集合</p><h2 id='header-相关公理'>相关公理<a class='docs-heading-anchor-permalink'></a></h2><p>空集公理，原型为</p><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>@axiom empty_set() begin
-	exists(emp -&gt; forall(x -&gt; !(x∈emp)))
+</code></pre></div><br /><p><code>∈</code>/<code>in</code> 表明「属于」，唯一方法是 <code>(::Any, ::Set)</code></p><p><code>Set(p::Lambda)</code> 构建一个包含所有满足条件 <code>p</code> 元素的集合，它的存在性需要额外证明，且 <code>p</code> 必须从 <code>Set</code> 映射到 <code>Bool</code>，例如 <code>Set(x -&gt; x===∅)</code> 可以创建 <span class='math tex'>\{\empty\}</span></p><p>进一步地，定义</p><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>function broadcast(f::Lambda, set::Set)
+	Set() do x
+		exists(y -&gt; and(y∈set, f(y)===x))
+	end
+end
+
+Set(p::Lambda, ext::Set) = broadcast(ext, Set(p))
+
+function enumerate(data)
+	Set(x -&gt; x∈data)
+end
+
+enum(args...) = enumerate(args)
+</code></pre></div><br /><h2 id='header-相关公理'>相关公理<a class='docs-heading-anchor-permalink'></a></h2><p>空集公理，原型为</p><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>@axiom empty_set() begin
+	exists(Set(_ -&gt; false))
 end
 </code></pre></div><br /><p>配对公理，原型为</p><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>@axiom @forall pair_set(a, b) begin
 	exists(c -&gt; forall(d -&gt; (d∈c =&gt; or(d===a, d===b))))
@@ -44,7 +57,12 @@ end
 </code></pre></div><br /><p>并集公理，原型为</p><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>@axiom @forall union_set(a, b) begin
 	exists(c -&gt; forall(d -&gt; (d∈c =&gt; or(d∈a, d∈b))))
 end
-</code></pre></div><br /><p>未完待续</p><h2 id='header-相关常量'>相关常量<a class='docs-heading-anchor-permalink'></a></h2><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>const ∅ = @getexist axiom_emptyset
+</code></pre></div><br /><p>未完待续</p><h2 id='header-相关常量'>相关常量<a class='docs-heading-anchor-permalink'></a></h2><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>const ∅ = Set(_ -&gt; false)
+@proof emptyset_exists begin
+	@ax_empty_set
+	@beta ∅ @expr"1# 1"
+	@QED
+end
 </code></pre></div><br /></article>
 			<nav class="docs-footer"><a class='docs-footer-prevpage' href='namedtuples.html'>« 具名元组</a><div class='flexbox-break'></div><p class='footer-message'>Powered by <a href='https://github.com/JuliaRoadmap/DoctreePages.jl'>DoctreePages.jl</a> and its dependencies.</p></nav>
 			<div class='giscus'></div>
