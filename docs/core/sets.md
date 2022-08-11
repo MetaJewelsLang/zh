@@ -9,16 +9,30 @@
 
 `∈`/`in` 表明「属于」，唯一方法是 `(::Any, ::Set)`
 
-`Set(p::Predicate)` 构建一个满足条件 `p` 的集合，它的存在性需要额外证明，且 `p` 必须从 `Set` 映射到 `Bool`
+`Set(p::Lambda)` 构建一个包含所有满足条件 `p` 元素的集合，它的存在性需要额外证明，且 `p` 必须从 `Set` 映射到 `Bool`，例如 `Set(x -> x===∅)` 可以创建 $\{\empty\}$
 
-## 相关宏
-`@enum` 能够通过枚举构造集合
+进一步地，定义
+```jl
+function broadcast(f::Lambda, set::Set)
+	Set() do x
+		exists(y -> and(y∈set, f(y)===x))
+	end
+end
+
+Set(p::Lambda, ext::Set) = broadcast(ext, Set(p))
+
+function enumerate(data)
+	Set(x -> x∈data)
+end
+
+enum(args...) = enumerate(args)
+```
 
 ## 相关公理
 空集公理，原型为
 ```jl
 @axiom empty_set() begin
-	exists(emp -> forall(x -> !(x∈emp)))
+	exists(Set(_ -> false))
 end
 ```
 
@@ -40,5 +54,10 @@ end
 
 ## 相关常量
 ```jl
-const ∅ = @getexist axiom_emptyset
+const ∅ = Set(_ -> false)
+@proof emptyset_exists begin
+	@ax_empty_set
+	@beta ∅ @expr"1# 1"
+	@QED
+end
 ```

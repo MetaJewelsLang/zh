@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE svg>
-<svg width="250" height="250" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<svg width="300" height="250" version="1.1" xmlns="http://www.w3.org/2000/svg">
 	<ellipse stroke="black" stroke-width="1" fill="none" cx="166.5" cy="33.5" rx="30" ry="30"/>
 	<text x="146.5" y="39.5" font-family="Times New Roman" font-size="20">call</text>
 	<ellipse stroke="black" stroke-width="1" fill="none" cx="64.5" cy="83.5" rx="30" ry="30"/>
