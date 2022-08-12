@@ -1,6 +1,7 @@
 outline = [
 	"meta",
 	"low",
+	"guidelines",
 	"core",
 	"base",
 	"stdlib",
@@ -8,6 +9,7 @@ outline = [
 [names]
 meta = "Meta"
 low = "底层语法"
+guidelines = "规范"
 core = "内置内容"
 base = "Base内容"
 stdlib = "标准库"
