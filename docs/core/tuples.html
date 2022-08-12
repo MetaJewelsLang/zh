@@ -34,7 +34,13 @@
 					<a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a>
 				</div>
 			</header>
-			<article class="content"><h1 id='header-元组'>元组<a class='docs-heading-anchor-permalink'></a></h1><p>元组类型名为 <code>Tuple</code></p><h2 id='header-相关公理'>相关公理<a class='docs-heading-anchor-permalink'></a></h2><p>暂无内容</p></article>
+			<article class="content"><h1 id='header-元组'>元组<a class='docs-heading-anchor-permalink'></a></h1><p>元组类型名为 <code>Tuple</code></p><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>struct Tuple
+	wrap::Set
+	function Tuple(set::Set)
+		...
+	end
+end
+</code></pre></div><br /><h2 id='header-相关公理'>相关公理<a class='docs-heading-anchor-permalink'></a></h2><p>暂无内容</p></article>
 			<nav class="docs-footer"><a class='docs-footer-prevpage' href='exists.html'>« 存在</a><a class='docs-footer-nextpage' href='namedtuples.html'>具名元组 »</a><div class='flexbox-break'></div><p class='footer-message'>Powered by <a href='https://github.com/JuliaRoadmap/DoctreePages.jl'>DoctreePages.jl</a> and its dependencies.</p></nav>
 			<div class='giscus'></div>
 		</div>

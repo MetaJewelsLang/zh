@@ -34,7 +34,7 @@
 					<a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a>
 				</div>
 			</header>
-			<article class="content"><h1 id='header-语法树'>语法树<a class='docs-heading-anchor-permalink'></a></h1><p>形如 <code>(3*4+2)</code> 的东西会首先被「解析(parse)」成如下的「表达式(expression)」</p><p><img src='/zh/assets/svg/syntaxtree-1.svg' alt='img'></p><p>在许多情形下，它会被进一步的「评估(evaluate)」操作得到「值(value)」：14，但本语言中此表达式会被保留</p><h2 id='header-操作'>操作<a class='docs-heading-anchor-permalink'></a></h2><p>以表达式 <code>x+f(y)</code> 为例，假设已知 <code>f(x) = x^2</code> （或者用「λ表达式」，记作<code>f = λ x.x^2</code>）</p><ul><li><p>先对 <code>f</code> 进行「α-重命名」操作，变为 <code>f(y) = y^2</code></p></li><li><p>再通过 「β-规约」操作带回表达式，得到 <code>x+(y^2)</code></p></li></ul></article>
+			<article class="content"><h1 id='header-语法树'>语法树<a class='docs-heading-anchor-permalink'></a></h1><p>形如 <code>(3*4+2)</code> 的东西会首先被「解析(parse)」成如下的「表达式(expression)」</p><p><img src='/zh/assets/svg/syntaxtree-1.svg' alt='img'></p><p>在许多情形下，它会被进一步的「评估(evaluate)」操作得到「值(value)」：14，但本语言中此表达式会被保留</p><h2 id='header-操作'>操作<a class='docs-heading-anchor-permalink'></a></h2><p>以表达式 <code>x+f(y)</code> 为例，假设已知 <code>f(x) = x^2</code> （或者用「λ表达式」，记作<code>f = λ x.x^2</code>）</p><ul><li><p>先对 <code>f</code> 进行「α-重命名」操作，变为 <code>f(y) = y^2</code></p></li><li><p>再通过 「β-规约」操作代回表达式，得到 <code>x+(y^2)</code></p></li></ul></article>
 			<nav class="docs-footer"><a class='docs-footer-prevpage' href='existence.html'>« 存在性</a><a class='docs-footer-nextpage' href='binding.html'>绑定 »</a><div class='flexbox-break'></div><p class='footer-message'>Powered by <a href='https://github.com/JuliaRoadmap/DoctreePages.jl'>DoctreePages.jl</a> and its dependencies.</p></nav>
 			<div class='giscus'></div>
 		</div>
