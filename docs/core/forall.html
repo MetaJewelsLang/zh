@@ -34,13 +34,7 @@
 					<a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a>
 				</div>
 			</header>
-			<article class="content"><h1 id='header-任意'>任意<a class='docs-heading-anchor-permalink'></a></h1><h2 id='header-函数'>函数<a class='docs-heading-anchor-permalink'></a></h2><p><code>forall</code> 接受一个谓词作为参数，其必须映射到 <code>Bool</code> ，表示「任意」</p><h2 id='header-宏'>宏<a class='docs-heading-anchor-permalink'></a></h2><p><code>@forall</code> 原型是</p><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>macro forall(x, expr::Expr)
-	return :(forall($x -&gt; $expr))
-end
-macro forall(tup::Tuple, expr::Expr)
-	return :(forall($(tup...) -&gt; $expr))
-end
-</code></pre></div><br /></article>
+			<article class="content"><h1 id='header-任意'>任意<a class='docs-heading-anchor-permalink'></a></h1><h2 id='header-函数'>函数<a class='docs-heading-anchor-permalink'></a></h2><p><code>forall</code> 接受一个谓词作为参数，其必须映射到 <code>Bool</code> ，表示「任意」</p></article>
 			<nav class="docs-footer"><a class='docs-footer-prevpage' href='logics.html'>« 逻辑</a><a class='docs-footer-nextpage' href='exists.html'>存在 »</a><div class='flexbox-break'></div><p class='footer-message'>Powered by <a href='https://github.com/JuliaRoadmap/DoctreePages.jl'>DoctreePages.jl</a> and its dependencies.</p></nav>
 			<div class='giscus'></div>
 		</div>
