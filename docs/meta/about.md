@@ -4,8 +4,8 @@
 
 ## 特性
 * 类型系统
-* 抽象系统
 * 宏系统
+	* 辅助证明系统
 * 模块管理系统
 
 ## 用途
@@ -13,6 +13,7 @@
 * 完善法律
 * 完善标准化方式
 * *有助于*去中心化
+* 证明正确性检验
 * 再写就像圈钱的了（
 
 ## 状态
@@ -20,10 +21,14 @@
 
 ## 图景/设计样例
 ```jl
-@category RealNumber(r::Range) begin
-	@rule ofcat(cat"WithUpperBound", r)
-	@rule ofcat(cat"OrderedField", r, +, *)
-	@rule (@forallin n ℚ n∈r)
+struct RealNumber
+	field
+	data
+	RealNumber(field, data) =
+		has_lowest_supbound(field) &&
+		is_ordered_field(field, +, *, zero(field), one(field)) &&
+		wider_in(ℚ, field) &&
+		data in field ? new(field, data) : void
 end
 
 struct DedekindCutRealNumber
