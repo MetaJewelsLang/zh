@@ -4,6 +4,5 @@ outline = [
 	"forall",
 	"exists",
 	"tuples",
-	"namedtuples",
 	"sets",
 ]

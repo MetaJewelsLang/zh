@@ -9,15 +9,14 @@
 * 模块管理系统
 
 ## 用途
-* 人工智能训练数据与新算法创建
-* 完善法律
-* 完善标准化方式
-* *有助于*去中心化
+* 计算机证明
 * 证明正确性检验
+* 人工智能训练数据与新算法创建
+* 完善标准化方式
 * 再写就像圈钱的了（
 
 ## 状态
-项目当前处于 0.1.0 前状态，1.0.0 正式发布预计将在15年内完成
+项目当前处于 0.1.0 前状态
 
 ## 图景/设计样例
 ```jl
@@ -52,7 +51,3 @@ mjl> methods(love)
 # 1 method for generic function "love":
 [1] love(from::FreeWill, to::Any, judge::Will) in FreeWills.Common.General at general.mjl:23
 ```
-
-## 参考阅读
-- Julia Type Theory
-- Haskell Category Theory
