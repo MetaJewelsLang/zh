@@ -3,9 +3,9 @@
 <head>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>内置内容/类型 - MetaJewels</title>
+	<title>规范/文档 - MetaJewels</title>
 	<meta name="tURL" id="tURL" content="../../"/>
-	<meta name="description" content="内置内容/类型 - MetaJewels">
+	<meta name="description" content="规范/文档 - MetaJewels">
 	<script src="../../extra/info.js"></script>
 	<link id="theme-href" rel="stylesheet" type="text/css" href="../../css/light.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../extra/main.js"></script>
@@ -26,21 +26,21 @@
 		<div class="docs-main">
 			<header class="docs-navbar">
 				<nav class="breadcrumb">
-					<ul class="is-hidden-mobile"><li class="is-active">内置内容 / 类型</li></ul>
-					<ul class="is-hidden-tablet"><li class="is-active">内置内容 / 类型</li></ul>
+					<ul class="is-hidden-mobile"><li class="is-active">规范 / 文档</li></ul>
+					<ul class="is-hidden-tablet"><li class="is-active">规范 / 文档</li></ul>
 				</nav>
-				<div class="docs-right"><a class='docs-edit-link' href='https://github.com/MetaJewelsLang/zh/tree/master/docs/core/types.md' target='_blank'><span class='docs-label is-hidden-touch'>编辑此页面</span></a>
+				<div class="docs-right"><a class='docs-edit-link' href='https://github.com/MetaJewelsLang/zh/tree/master/docs/guidelines/documentation.md' target='_blank'><span class='docs-label is-hidden-touch'>编辑此页面</span></a>
 					<a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="设置"></a>
 					<a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a>
 				</div>
 			</header>
-			<article class="content"><h1 id='header-类型'>类型<a class='docs-heading-anchor-permalink'></a></h1><p>类型系统是现代语言的基本概念之一。在此处，我们用的是最朴素的类型系统设计：只有一条概念，即每个量都有其类型（通过 <code>typeof</code> 获取）。</p><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>mjl&gt; typeof(∅)
-Set
-
-mjl&gt; typeof(Set)
-Type
-</code></pre></div><br /><p>是的，我们没有类型继承机制或是类型参数机制，因为它们只会把问题变得复杂。</p></article>
-			<nav class="docs-footer"><a class="docs-footer-prevpage" href="index.html">« 索引</a><a class='docs-footer-nextpage' href='logics.html'>逻辑 »</a><div class='flexbox-break'></div><p class='footer-message'>Powered by <a href='https://github.com/JuliaRoadmap/DoctreePages.jl'>DoctreePages.jl</a> and its dependencies.</p></nav>
+			<article class="content"><h1 id='header-文档'>文档<a class='docs-heading-anchor-permalink'></a></h1><p>如果你希望给某个东西添加文档，可以在前面添加字符串，并使用 TOML 格式，其中第一级键是 MIME 类型的后半段（前半段始终为 <code>text</code>），如 <code>plain</code>；第二级键是 2 个字母表示的语言，如 <code>zh</code>、<code>en</code>。</p><p>例如：</p><div data-lang='jl'><div class='codeblock-header'></div><pre class='codeblock-body language-jl'><code>"""
+plain.zh = "百分号"
+plain.en = "percent symbol"
+"""
+%(n) = n/100
+</code></pre></div><br /></article>
+			<nav class="docs-footer"><a class='docs-footer-prevpage' href='naming.html'>« 命名规范</a><div class='flexbox-break'></div><p class='footer-message'>Powered by <a href='https://github.com/JuliaRoadmap/DoctreePages.jl'>DoctreePages.jl</a> and its dependencies.</p></nav>
 			<div class='giscus'></div>
 		</div>
 	</div>
